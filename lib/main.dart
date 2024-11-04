@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 void main() {
   runApp(const TicTacToe());
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool state = false; //false = cross, true = circle
   var icons = [Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, ];
 
-  void press(String s) {
+  void _press(String s) {
     switch(s){
       case "lu":
         setState(() {
@@ -91,6 +92,34 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     state = !state;
+
+    if(_hasWon() != "no") {
+      _showAlert(_hasWon());
+      _restart();
+    }
+  }
+
+  String _hasWon() {
+    //rows
+    if(icons[0] == icons[1] && icons[1] == icons[2] && icons[0] != Icons.directions_run_rounded && icons[1] != Icons.directions_run_rounded && icons[2] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[3] == icons[4] && icons[4] == icons[5] && icons[3] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[5] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[6] == icons[7] && icons[7] == icons[8] && icons[6] != Icons.directions_run_rounded && icons[7] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+
+    //columns
+    if(icons[0] == icons[3] && icons[3] == icons[6] && icons[0] != Icons.directions_run_rounded && icons[3] != Icons.directions_run_rounded && icons[6] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[1] == icons[4] && icons[4] == icons[7] && icons[1] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[7] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[2] == icons[5] && icons[5] == icons[8] && icons[2] != Icons.directions_run_rounded && icons[5] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+
+    //diagonals
+    if(icons[0] == icons[4] && icons[4] == icons[8] && icons[0] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[2] == icons[4] && icons[4] == icons[6] && icons[2] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[6] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+
+    //else
+    return "no";
+  }
+
+  void _showAlert(String content) {
+    CoolAlert.show(context: context, type: CoolAlertType.success, text: content, title: "Vittoria!");
   }
 
   void _restart() {
@@ -109,25 +138,25 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () => press("lu"/*left up*/), icon: Icon(icons[0]),),
-                IconButton(onPressed: () => press("cu"/*center up*/), icon: Icon(icons[1]),),
-                IconButton(onPressed: () => press("ru"/*righ up*/), icon: Icon(icons[2]),),
+                IconButton(onPressed: () => _press("lu"/*left up*/), icon: Icon(icons[0]),),
+                IconButton(onPressed: () => _press("cu"/*center up*/), icon: Icon(icons[1]),),
+                IconButton(onPressed: () => _press("ru"/*righ up*/), icon: Icon(icons[2]),),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () => press("lm"/*left middle*/), icon: Icon(icons[3]),),
-                IconButton(onPressed: () => press("cm"/*center middle*/), icon: Icon(icons[4]),),
-                IconButton(onPressed: () => press("rm"/*right middle*/), icon: Icon(icons[5]),),
+                IconButton(onPressed: () => _press("lm"/*left middle*/), icon: Icon(icons[3]),),
+                IconButton(onPressed: () => _press("cm"/*center middle*/), icon: Icon(icons[4]),),
+                IconButton(onPressed: () => _press("rm"/*right middle*/), icon: Icon(icons[5]),),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () => press("ld"/*left down*/), icon: Icon(icons[6]),),
-                IconButton(onPressed: () => press("cd"/*center down*/), icon: Icon(icons[7]),),
-                IconButton(onPressed: () => press("rd"/*right down*/), icon: Icon(icons[8]),),
+                IconButton(onPressed: () => _press("ld"/*left down*/), icon: Icon(icons[6]),),
+                IconButton(onPressed: () => _press("cd"/*center down*/), icon: Icon(icons[7]),),
+                IconButton(onPressed: () => _press("rd"/*right down*/), icon: Icon(icons[8]),),
               ],
             ),
             Padding(
