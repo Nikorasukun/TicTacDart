@@ -34,6 +34,17 @@ class _MyHomePageState extends State<MyHomePage> {
   bool state = false; //false = cross, true = circle
   var icons = [Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, ];
 
+  //TO DO LIST
+  //aggiungere bot che fa mosse random
+  //migliorare estetica bottone restart
+  //mettere colori rosso e blu a icone
+  //mettere vari temi di colori sceglibili tramite iconcine
+  //menù per selezionare la modalità
+  //implementare logica base bot attacco-difesa-random
+  //codificare mosse in file json in modo che il bot impari dall'utente
+  //aggiungere sound effects
+  //implementare nuove modalità oltre che PvP e Bot, magari dopo tot mosse la prima mossa fatta viene resa neutra
+
   void _press(String s) {
     switch(s){
       case "lu":
