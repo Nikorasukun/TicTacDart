@@ -93,6 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
     state = !state;
   }
 
+  void _restart() {
+    setState(() {
+      icons = [Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,6 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 IconButton(onPressed: () => press("rd"/*right down*/), icon: Icon(icons[8]),),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(onPressed: _restart, child: const Text("RESTART"),),
+            )
           ],
         ),
       )
