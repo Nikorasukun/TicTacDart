@@ -30,20 +30,72 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool state = false; //false = circle, true = cross
+  bool state = false; //false = cross, true = circle
+  var icons = [Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, ];
 
+  void press(String s) {
+    switch(s){
+      case "lu":
+        setState(() {
+          icons[0] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
 
-  void press() {
+      case "cu":
+        setState(() {
+          icons[1] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
 
+      case "ru":
+        setState(() {
+          icons[2] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+
+      case "lm":
+        setState(() {
+          icons[3] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+
+      case "cm":
+        setState(() {
+          icons[4] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+
+      case "rm":
+        setState(() {
+          icons[5] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+
+      case "ld":
+        setState(() {
+          icons[6] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+
+      case "cd":
+        setState(() {
+          icons[7] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+
+      case "rd":
+        setState(() {
+          icons[8] = state ? Icons.circle_outlined : Icons.close;
+        });
+        break;
+    }
+
+    state = !state;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,25 +103,25 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
+                IconButton(onPressed: () => press("lu"/*left up*/), icon: Icon(icons[0]),),
+                IconButton(onPressed: () => press("cu"/*center up*/), icon: Icon(icons[1]),),
+                IconButton(onPressed: () => press("ru"/*righ up*/), icon: Icon(icons[2]),),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
+                IconButton(onPressed: () => press("lm"/*left middle*/), icon: Icon(icons[3]),),
+                IconButton(onPressed: () => press("cm"/*center middle*/), icon: Icon(icons[4]),),
+                IconButton(onPressed: () => press("rm"/*right middle*/), icon: Icon(icons[5]),),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
-                IconButton(onPressed: press, icon: const Icon(Icons.piano),),
+                IconButton(onPressed: () => press("ld"/*left down*/), icon: Icon(icons[6]),),
+                IconButton(onPressed: () => press("cd"/*center down*/), icon: Icon(icons[7]),),
+                IconButton(onPressed: () => press("rd"/*right down*/), icon: Icon(icons[8]),),
               ],
             ),
           ],
