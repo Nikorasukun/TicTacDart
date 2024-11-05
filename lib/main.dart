@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 void main() {
   runApp(const TicTacToe());
@@ -34,9 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
   bool state = false; //false = close, true = circle
   var colors = [Colors.black, Colors.blue, Colors.red]; //neutral, p1, p2
   var icons = <Icon>[]; //array of icons of grid
-  var neutralIcon = Icons.directions_run_rounded;
-  var p1Icon = Icons.close;
-  var p2Icon = Icons.circle_outlined;
+  IconData? neutralIcon = Icons.directions_run_rounded;
+  IconData? p1Icon = Icons.close;
+  IconData? p2Icon = Icons.circle_outlined;
+  var buttonColors = [Colors.red, Colors.blue, Colors.purple, Colors.amber, Colors.green, Colors.orange, Colors.deepPurple, Colors.pink];
 
   @override
   void initState() {
@@ -48,9 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
   //TO DO LIST
   //migliorare estetica bottone restart   --done
   //mettere colori rosso e blu a icone    --done
-  //generalizza icone player              --done
+  //generalizza icone player    --done
   //chiedi nomi ai player
-  //mettere vari temi di colori sceglibili tramite iconcine
+  //mettere vari temi di colori sceglibili tramite iconcine   --done
   //menù per selezionare la modalità
   //aggiungere sound effects
   //aggiungere bot che fa mosse random
@@ -223,6 +225,24 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _changeColour(MaterialColor primary, MaterialColor secondary){
+    setState(() {
+      colors[1] = primary;
+      colors[2] = secondary;
+
+      for(int i = 0; i < icons.length; i++) {
+        if(icons[i].icon == neutralIcon)
+        { icons[i] = Icon(neutralIcon, color: colors[0]); }
+
+        if(icons[i].icon == p1Icon)
+        { icons[i] = Icon(p1Icon, color: colors[2]); }
+
+        if(icons[i].icon == p2Icon)
+        { icons[i] = Icon(p2Icon, color: colors[1]); }        
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -270,8 +290,61 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: _restart,
                 child: const Text("RESTART"),
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () => _changeColour(buttonColors[0], buttonColors[1]),
+                  icon: GradientIcon(
+                    icon: Icons.circle,
+                    gradient: LinearGradient(
+                      colors: [buttonColors[0], buttonColors[1]],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  iconSize: 15,
+                ),
+                IconButton(
+                  onPressed: () => _changeColour(buttonColors[2], buttonColors[3]),
+                  icon:  GradientIcon(
+                    icon: Icons.circle,
+                    gradient: LinearGradient(
+                      colors: [buttonColors[2], buttonColors[3]],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  iconSize: 15,
+                ),
+                IconButton(
+                  onPressed: () => _changeColour(buttonColors[4], buttonColors[5]),
+                  icon:  GradientIcon(
+                    icon: Icons.circle,
+                    gradient: LinearGradient(
+                      colors: [buttonColors[4], buttonColors[5]],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  iconSize: 15,
+                ),
+                IconButton(
+                  onPressed: () => _changeColour(buttonColors[6], buttonColors[7]),
+                  icon: GradientIcon(
+                    icon: Icons.circle,
+                    gradient: LinearGradient(
+                      colors: [buttonColors[6], buttonColors[7]],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  iconSize: 15,
+                ),
+              ],
             )
-          ],
+          ],          
         ),
       )
     );
