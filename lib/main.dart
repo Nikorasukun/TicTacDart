@@ -46,6 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
   //TO DO LIST
   //migliorare estetica bottone restart   --done
   //mettere colori rosso e blu a icone    --done
+  //generalizza icone player
+  //chiedi nomi ai player
   //mettere vari temi di colori sceglibili tramite iconcine
   //menù per selezionare la modalità
   //aggiungere sound effects
