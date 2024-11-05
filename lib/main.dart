@@ -32,11 +32,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool state = false; //false = cross, true = circle
-  var icons = [Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, ];
+  var colors = [Colors.black, Colors.blue, Colors.red]; //neutral, p1, p2
+  var icons = <Icon>[]; //array of icons of grid
+  var neutralIcon = Icons.directions_run_rounded;
+
+  @override
+  void initState() {
+    super.initState();
+    _arrayInizializer();
+  }
+
 
   //TO DO LIST
-  //migliorare estetica bottone restart
-  //mettere colori rosso e blu a icone
+  //migliorare estetica bottone restart   --done
+  //mettere colori rosso e blu a icone    --done
   //mettere vari temi di colori sceglibili tramite iconcine
   //menù per selezionare la modalità
   //aggiungere sound effects
@@ -45,59 +54,77 @@ class _MyHomePageState extends State<MyHomePage> {
   //codificare mosse in file json in modo che il bot impari dall'utente
   //implementare nuove modalità oltre che PvP e Bot, magari dopo tot mosse la prima mossa fatta viene resa neutra
 
+  void _arrayInizializer(){
+    icons.clear();
+    for(int i = 0; i < 9; i++) {
+      icons.add(Icon(neutralIcon, color: colors[0]));
+    }
+  }
+
+  //U+0F6B8
+
   void _press(String s) {
     switch(s){
       case "lu":
         setState(() {
-          if(icons[0] == Icons.directions_run_rounded) { icons[0] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[0].icon == neutralIcon)
+          { icons[0] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "cu":
         setState(() {
-          if(icons[1] == Icons.directions_run_rounded) { icons[1] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[1].icon == neutralIcon)
+          { icons[1] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "ru":
         setState(() {
-          if(icons[2] == Icons.directions_run_rounded) { icons[2] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[2].icon == neutralIcon)
+          { icons[2] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "lm":
         setState(() {
-          if(icons[3] == Icons.directions_run_rounded) { icons[3] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[3].icon == neutralIcon)
+          { icons[3] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "cm":
         setState(() {
-          if(icons[4] == Icons.directions_run_rounded) { icons[4] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[4].icon == neutralIcon)
+          { icons[4] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "rm":
         setState(() {
-          if(icons[5] == Icons.directions_run_rounded) { icons[5] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[5].icon == neutralIcon)
+          { icons[5] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "ld":
         setState(() {
-          if(icons[6] == Icons.directions_run_rounded) { icons[6] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[6].icon == neutralIcon)
+          { icons[6] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "cd":
         setState(() {
-          if(icons[7] == Icons.directions_run_rounded) { icons[7] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[7].icon == neutralIcon)
+          { icons[7] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
 
       case "rd":
         setState(() {
-          if(icons[8] == Icons.directions_run_rounded) { icons[8] = state ? Icons.circle_outlined : Icons.close; state = !state; }
+          if(icons[8].icon == neutralIcon)
+          { icons[8] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
         });
         break;
     }
@@ -109,22 +136,76 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   String _hasWon() {
+
     //rows
-    if(icons[0] == icons[1] && icons[1] == icons[2] && icons[0] != Icons.directions_run_rounded && icons[1] != Icons.directions_run_rounded && icons[2] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
-    if(icons[3] == icons[4] && icons[4] == icons[5] && icons[3] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[5] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
-    if(icons[6] == icons[7] && icons[7] == icons[8] && icons[6] != Icons.directions_run_rounded && icons[7] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[0].icon == icons[1].icon
+    && icons[1].icon == icons[2].icon
+    && icons[0].icon != neutralIcon
+    && icons[1].icon != neutralIcon
+    && icons[2].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
+    if(icons[3].icon == icons[4].icon
+    && icons[4].icon == icons[5].icon
+    && icons[3].icon != neutralIcon
+    && icons[4].icon != neutralIcon
+    && icons[5].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
+    if(icons[6].icon == icons[7].icon
+    && icons[7].icon == icons[8].icon
+    && icons[6].icon != neutralIcon
+    && icons[7].icon != neutralIcon
+    && icons[8].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
 
     //columns
-    if(icons[0] == icons[3] && icons[3] == icons[6] && icons[0] != Icons.directions_run_rounded && icons[3] != Icons.directions_run_rounded && icons[6] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
-    if(icons[1] == icons[4] && icons[4] == icons[7] && icons[1] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[7] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
-    if(icons[2] == icons[5] && icons[5] == icons[8] && icons[2] != Icons.directions_run_rounded && icons[5] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[0].icon == icons[3].icon
+    && icons[3].icon == icons[6].icon
+    && icons[0].icon != neutralIcon
+    && icons[3].icon != neutralIcon
+    && icons[6].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
+    if(icons[1].icon == icons[4].icon
+    && icons[4].icon == icons[7].icon
+    && icons[1].icon != neutralIcon
+    && icons[4].icon != neutralIcon
+    && icons[7].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
+    if(icons[2].icon == icons[5].icon
+    && icons[5].icon == icons[8].icon
+    && icons[2].icon != neutralIcon
+    && icons[5].icon != neutralIcon
+    && icons[8].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
 
     //diagonals
-    if(icons[0] == icons[4] && icons[4] == icons[8] && icons[0] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
-    if(icons[2] == icons[4] && icons[4] == icons[6] && icons[2] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[6] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
+    if(icons[0].icon == icons[4].icon
+    && icons[4].icon == icons[8].icon
+    && icons[0].icon != neutralIcon
+    && icons[4].icon != neutralIcon
+    && icons[8].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
 
-    //tie
-    if(!(icons.contains(Icons.directions_run_rounded))) { return "La partita è finita in pareggio."; }
+    if(icons[2].icon == icons[4].icon
+    && icons[4].icon == icons[6].icon
+    && icons[2].icon != neutralIcon
+    && icons[4].icon != neutralIcon
+    && icons[6].icon != neutralIcon)
+    { return state ? "Ha vinto il giocatore 1" : "Ha vinto il giocatore 2"; }
+
+
+    //tie mechanic
+    bool tie = true;
+    for(int i = 0; i < icons.length; i++){
+      if(icons[i].icon == neutralIcon) { tie = false; break; }
+    }
+    if(tie) { return "La partita è finita in pareggio."; }
+
 
     //else
     return "no";
@@ -136,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _restart() {
     setState(() {
-      icons = [Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded, Icons.directions_run_rounded];
+      _arrayInizializer();
     });
   }
 
@@ -150,25 +231,25 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () => _press("lu"/*left up*/), icon: Icon(icons[0]),),
-                IconButton(onPressed: () => _press("cu"/*center up*/), icon: Icon(icons[1]),),
-                IconButton(onPressed: () => _press("ru"/*righ up*/), icon: Icon(icons[2]),),
+                IconButton(onPressed: () => _press("lu"/*left up*/), icon: icons[0]),
+                IconButton(onPressed: () => _press("cu"/*center up*/), icon: icons[1]),
+                IconButton(onPressed: () => _press("ru"/*righ up*/), icon: icons[2]),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () => _press("lm"/*left middle*/), icon: Icon(icons[3]),),
-                IconButton(onPressed: () => _press("cm"/*center middle*/), icon: Icon(icons[4]),),
-                IconButton(onPressed: () => _press("rm"/*right middle*/), icon: Icon(icons[5]),),
+                IconButton(onPressed: () => _press("lm"/*left middle*/), icon: icons[3]),
+                IconButton(onPressed: () => _press("cm"/*center middle*/), icon: icons[4]),
+                IconButton(onPressed: () => _press("rm"/*right middle*/), icon: icons[5]),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () => _press("ld"/*left down*/), icon: Icon(icons[6]),),
-                IconButton(onPressed: () => _press("cd"/*center down*/), icon: Icon(icons[7]),),
-                IconButton(onPressed: () => _press("rd"/*right down*/), icon: Icon(icons[8]),),
+                IconButton(onPressed: () => _press("ld"/*left down*/), icon: icons[6]),
+                IconButton(onPressed: () => _press("cd"/*center down*/), icon: icons[7]),
+                IconButton(onPressed: () => _press("rd"/*right down*/), icon: icons[8]),
               ],
             ),
             Padding(
