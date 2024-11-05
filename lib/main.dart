@@ -49,60 +49,58 @@ class _MyHomePageState extends State<MyHomePage> {
     switch(s){
       case "lu":
         setState(() {
-          icons[0] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[0] == Icons.directions_run_rounded) { icons[0] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "cu":
         setState(() {
-          icons[1] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[1] == Icons.directions_run_rounded) { icons[1] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "ru":
         setState(() {
-          icons[2] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[2] == Icons.directions_run_rounded) { icons[2] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "lm":
         setState(() {
-          icons[3] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[3] == Icons.directions_run_rounded) { icons[3] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "cm":
         setState(() {
-          icons[4] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[4] == Icons.directions_run_rounded) { icons[4] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "rm":
         setState(() {
-          icons[5] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[5] == Icons.directions_run_rounded) { icons[5] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "ld":
         setState(() {
-          icons[6] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[6] == Icons.directions_run_rounded) { icons[6] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "cd":
         setState(() {
-          icons[7] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[7] == Icons.directions_run_rounded) { icons[7] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
 
       case "rd":
         setState(() {
-          icons[8] = state ? Icons.circle_outlined : Icons.close;
+          if(icons[8] == Icons.directions_run_rounded) { icons[8] = state ? Icons.circle_outlined : Icons.close; state = !state; }
         });
         break;
     }
-
-    state = !state;
 
     if(_hasWon() != "no") {
       _showAlert(_hasWon());
@@ -172,7 +170,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(onPressed: _restart, child: const Text("RESTART"),),
+              child: 
+              ElevatedButton(
+                style: const ButtonStyle(
+                  foregroundColor: WidgetStatePropertyAll(Colors.black),
+                  backgroundColor: WidgetStatePropertyAll<Color>(Color.fromARGB(255, 178, 252, 193)),
+                  side: WidgetStatePropertyAll(BorderSide(
+                    width: 3.0,
+                    color: Color.fromARGB(255, 6, 209, 50)
+                  ),
+                  ), 
+                ),
+                onPressed: _restart,
+                child: const Text("RESTART"),
+              ),
             )
           ],
         ),
