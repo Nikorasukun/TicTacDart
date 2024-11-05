@@ -31,10 +31,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool state = false; //false = cross, true = circle
+  bool state = false; //false = close, true = circle
   var colors = [Colors.black, Colors.blue, Colors.red]; //neutral, p1, p2
   var icons = <Icon>[]; //array of icons of grid
   var neutralIcon = Icons.directions_run_rounded;
+  var p1Icon = Icons.close;
+  var p2Icon = Icons.circle_outlined;
 
   @override
   void initState() {
@@ -46,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   //TO DO LIST
   //migliorare estetica bottone restart   --done
   //mettere colori rosso e blu a icone    --done
-  //generalizza icone player
+  //generalizza icone player              --done
   //chiedi nomi ai player
   //mettere vari temi di colori sceglibili tramite iconcine
   //menù per selezionare la modalità
@@ -63,70 +65,68 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  //U+0F6B8
-
   void _press(String s) {
     switch(s){
       case "lu":
         setState(() {
           if(icons[0].icon == neutralIcon)
-          { icons[0] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[0] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "cu":
         setState(() {
           if(icons[1].icon == neutralIcon)
-          { icons[1] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[1] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "ru":
         setState(() {
           if(icons[2].icon == neutralIcon)
-          { icons[2] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[2] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "lm":
         setState(() {
           if(icons[3].icon == neutralIcon)
-          { icons[3] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[3] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "cm":
         setState(() {
           if(icons[4].icon == neutralIcon)
-          { icons[4] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[4] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "rm":
         setState(() {
           if(icons[5].icon == neutralIcon)
-          { icons[5] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[5] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "ld":
         setState(() {
           if(icons[6].icon == neutralIcon)
-          { icons[6] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[6] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "cd":
         setState(() {
           if(icons[7].icon == neutralIcon)
-          { icons[7] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[7] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
 
       case "rd":
         setState(() {
           if(icons[8].icon == neutralIcon)
-          { icons[8] = state ? Icon(Icons.circle_outlined, color: colors[1]) : Icon(Icons.close, color: colors[2]); state = !state; }
+          { icons[8] = state ? Icon(p2Icon, color: colors[1]) : Icon(p1Icon, color: colors[2]); state = !state; }
         });
         break;
     }
