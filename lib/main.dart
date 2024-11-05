@@ -123,12 +123,15 @@ class _MyHomePageState extends State<MyHomePage> {
     if(icons[0] == icons[4] && icons[4] == icons[8] && icons[0] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[8] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
     if(icons[2] == icons[4] && icons[4] == icons[6] && icons[2] != Icons.directions_run_rounded && icons[4] != Icons.directions_run_rounded && icons[6] != Icons.directions_run_rounded) { return state ? "Ha vinto il giocatore 2" : "Ha vinto il giocatore 1"; }
 
+    //tie
+    if(!(icons.contains(Icons.directions_run_rounded))) { return "La partita è finita in pareggio."; }
+
     //else
     return "no";
   }
 
   void _showAlert(String content) {
-    CoolAlert.show(context: context, type: CoolAlertType.success, text: content, title: "Vittoria!");
+    CoolAlert.show(context: context, type: CoolAlertType.success, text: content, title: "Esito");
   }
 
   void _restart() {
