@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:gradient_icon/gradient_icon.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(const TicTacToe());
